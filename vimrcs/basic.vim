@@ -1,30 +1,52 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
-"       Amir Salihefendic — @amix3k
-"
-" Awesome_version:
-"       Get this config, nice color schemes and lots of plugins!
-"
-"       Install the awesome version from:
-"
-"           https://github.com/amix/vimrc
-"
-" Sections:
-"    -> General
-"    -> VIM user interface
-"    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Moving around, tabs and buffers
-"    -> Status line
-"    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
-"    -> Misc
-"    -> Helper functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+" set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
+
+" ==============================================================
+" https://bluesh55.github.io/2016/10/09/vim-ide/
+" ==============================================================
+
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+"
+Plugin 'scrooloose/nerdtree'    " added nerdtree
+"
+Plugin 'vim-airline/vim-airline' 
+"
+Plugin 'airblade/vim-gitgutter'
+"
+Plugin 'tpope/vim-fugitive'
+"
+Plugin 'ctrlpvim/ctrlp.vim'
+"
+Plugin 'nanotech/jellybeans.vim'
+"
+" Plugin 'vimshell.vim'
+"
+" Plugin 'vimproc.vim'
+
+call vundle#end()
+
+" =============================================================
+" Plugin 'ctrlpvim/ctrlp.vim'
+" =============================================================
+"
+"let g:ctrlp_custom_ignore = {
+"  \ 'dir':  '\.git$\|public$\|log$\|tmp$\|vendor$',
+"  \ 'file': '\v\.(exe|so|dll)$'
+"  \ }
+
+" =============================================================
+" Plugin 'nanotech/jellybeans.vim'
+" =============================================================
+
+" color jellybeans
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -61,8 +83,8 @@ set so=7
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en' 
 set langmenu=en
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
+" source $VIMRUNTIME/delmenu.vim
+" source $VIMRUNTIME/menu.vim
 
 " Turn on the Wild menu
 set wildmenu
@@ -122,10 +144,8 @@ if has("gui_macvim")
     autocmd GUIEnter * set vb t_vb=
 endif
 
-
 " Add a bit extra margin to the left
 set foldcolumn=1
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -254,6 +274,19 @@ endtry
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+
+""""""""""""""""""""""""""""""
+" => ctags
+""""""""""""""""""""""""""""""
+" set tags=./tags;/
+" set tags+=/usr/local/share/ctags/qt4
+" set tags=./tags,../tags,../../tags,../../../tags,../../../../tags,../../../../../tags
+
+""""""""""""""""""""""""""""""
+" => plugin maps
+""""""""""""""""""""""""""""""
+map <F2> :NERDTreeToggle<CR>
 
 
 """"""""""""""""""""""""""""""
